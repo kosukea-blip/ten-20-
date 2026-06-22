@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ten Academy 第1期 20名集客戦略</title>
+<style>
+:root { color-scheme: light; }
+* { box-sizing: border-box; }
+body { margin:0; padding:20px; background:#faf9f5; color:#1f1e1c;
+  font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Noto Sans JP",sans-serif; line-height:1.55; }
+.wrap { max-width:1140px; margin:0 auto; }
+h1 { font-size:21px; margin:0 0 4px; }
+.sub { color:#6b6a64; font-size:13px; margin:0 0 16px; }
+.ptabs { display:flex; gap:6px; margin-bottom:16px; border-bottom:2px solid #e7e5dc; flex-wrap:wrap; }
+.ptab { padding:8px 16px; border-radius:8px 8px 0 0; border:1px solid #e7e5dc; border-bottom:none;
+  background:#f1efe8; cursor:pointer; font-size:13px; font-weight:700; color:#6b6a64; }
+.ptab.active { background:#1f1e1c; color:#fff; border-color:#1f1e1c; }
+.page.hide { display:none; }
+
+/* Pillar cards */
+.pillars { display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px; margin-bottom:18px; }
+@media(max-width:900px){.pillars{grid-template-columns:1fr 1fr;}}
+@media(max-width:600px){.pillars{grid-template-columns:1fr;}}
+.pillar { border-radius:14px; border:2px solid; padding:18px 20px; }
+.p1 { border-color:#e8590c; background:linear-gradient(135deg,#fff7f3,#fff); }
+.p2 { border-color:#2563eb; background:linear-gradient(135deg,#f0f6ff,#fff); }
+.p3 { border-color:#0f6e56; background:linear-gradient(135deg,#f1f9f5,#fff); }
+.pillar .pnum { font-size:11px; font-weight:700; letter-spacing:.8px; margin:0 0 4px; }
+.p1 .pnum { color:#e8590c; }
+.p2 .pnum { color:#2563eb; }
+.p3 .pnum { color:#0f6e56; }
+.pillar .ptitle { font-size:17px; font-weight:700; margin:0 0 6px; }
+.pillar .pdesc { font-size:12.5px; color:#5f5e5a; margin:0; line-height:1.6; }
+
+/* KPI chips */
+.kpis { display:flex; gap:10px; flex-wrap:wrap; margin-bottom:16px; }
+.kpi { background:#fff; border:1px solid #e7e5dc; border-radius:12px; padding:10px 14px; font-size:12px; color:#6b6a64; }
+.kpi b { font-size:20px; display:block; color:#1f1e1c; line-height:1.1; }
+.kpi.goal { background:#1f1e1c; color:#dcdcd6; }
+.kpi.goal b { color:#fff; }
+
+/* Bar chart */
+.bar-wrap { background:#fff; border:1px solid #e7e5dc; border-radius:12px; padding:14px 16px; margin-bottom:18px; }
+.bar-title { font-size:13px; font-weight:700; margin:0 0 10px; }
+.bar { display:flex; height:40px; border-radius:8px; overflow:hidden; border:1px solid #e7e5dc; }
+.seg { display:flex; align-items:center; justify-content:center; color:#fff; font-size:11.5px; font-weight:700; white-space:nowrap; }
+.legend { display:flex; gap:14px; flex-wrap:wrap; margin-top:10px; font-size:12px; color:#4a4943; }
+.legend span { display:inline-flex; align-items:center; gap:5px; }
+.dot { width:11px; height:11px; border-radius:3px; display:inline-block; }
+
+/* Notes */
+.note { background:#fff7e8; border:1px solid #f0d79a; border-radius:10px; padding:11px 14px; font-size:12.5px; color:#5a4a1e; }
+.note b { color:#7a5a10; }
+.note-blue { background:#f0f6ff; border:1px solid #bcd5f7; color:#1b4ba8; border-radius:10px; padding:11px 14px; font-size:12.5px; }
+.note-blue b { color:#1b4ba8; }
+.note-green { background:#f1f9f5; border:1px solid #5dcaa5; color:#04342c; border-radius:10px; padding:11px 14px; font-size:12.5px; }
+.note-green b { color:#0f6e56; }
+
+h2 { font-size:15px; margin:20px 0 10px; padding-bottom:6px; border-bottom:2px solid #e7e5dc; }
+h2:first-of-type { margin-top:0; }
+
+/* Group cards */
+.gcards { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
+@media(max-width:900px){.gcards{grid-template-columns:1fr 1fr;}}
+@media(max-width:580px){.gcards{grid-template-columns:1fr;}}
+.gcard { border-radius:12px; border:1px solid; overflow:hidden; }
+.gcard-h { padding:12px 14px; }
+.gcard-h .gnum { font-size:10.5px; font-weight:700; letter-spacing:.5px; opacity:.85; }
+.gcard-h .gtitle { font-size:16px; font-weight:700; margin:2px 0 0; }
+.gcard-h .gtarget { font-size:11.5px; opacity:.88; margin-top:3px; }
+.gcard-body { padding:12px 14px; background:#fff; }
+.tactic { margin-bottom:10px; }
+.tactic:last-child { margin-bottom:0; }
+.tactic-label { font-size:10.5px; font-weight:700; color:#6b6a64; letter-spacing:.5px; margin-bottom:4px; text-transform:uppercase; }
+.tactic-items { padding:0; margin:0; }
+.tactic-items li { margin:3px 0; list-style:none; padding-left:16px; position:relative; font-size:12px; line-height:1.5; }
+.tactic-items li::before { content:"→"; position:absolute; left:0; color:#9a988f; font-size:10px; top:2px; }
+.conv-path { font-size:11px; color:#6b6a64; margin-top:10px; padding-top:8px; border-top:1px dashed #e7e5dc;
+  display:flex; align-items:center; flex-wrap:wrap; gap:3px; }
+.conv-step { background:#f1efe8; border:1px solid #e7e5dc; border-radius:5px; padding:2px 7px;
+  font-size:11px; font-weight:700; color:#3a3934; white-space:nowrap; }
+.conv-step.s-line { background:#e6f9ee; border-color:#9be3b8; color:#067a3a; }
+.conv-arr { color:#9a988f; font-size:10px; }
+.key-person { display:inline-block; font-size:10.5px; font-weight:700; background:#fef3c7; color:#78350f;
+  border:1px solid #fcd34d; border-radius:5px; padding:1px 7px; margin:2px 1px; }
+
+/* Group color themes */
+.g1 { border-color:#f0b27a; }
+.g1 .gcard-h { background:#e8590c; color:#fff; }
+.g2 { border-color:#9bbef5; }
+.g2 .gcard-h { background:#2563eb; color:#fff; }
+.g3 { border-color:#86c9a8; }
+.g3 .gcard-h { background:#1a7f4b; color:#fff; }
+.g4 { border-color:#c3a8f0; }
+.g4 .gcard-h { background:#7c3aed; color:#fff; }
+.g5 { border-color:#5dcaa5; }
+.g5 .gcard-h { background:#0f6e56; color:#fff; }
+.g6 { border-color:#c9c7bd; }
+.g6 .gcard-h { background:#4a4943; color:#fff; }
+
+/* Funnel (legacy boxes reused inside steps) */
+.f-inflows { display:flex; gap:8px; flex-wrap:wrap; justify-content:center; width:100%; }
+.f-box { border-radius:10px; padding:10px 12px; font-size:12.5px; font-weight:700; text-align:center; border:1px solid; }
+.f-box small { display:block; font-weight:400; font-size:11px; margin-top:4px; opacity:.9; line-height:1.4; }
+.date-row { display:flex; gap:8px; justify-content:center; flex-wrap:wrap; margin-top:6px; }
+.date-box { background:#fff; border:1px solid #ef9f27; border-radius:8px; padding:7px 14px;
+  font-size:12px; font-weight:700; color:#412402; text-align:center; }
+.date-box small { display:block; font-weight:400; font-size:10.5px; margin-top:2px; color:#6b5a30; }
+
+/* 5-STEP FUNNEL */
+.steps { margin:8px 0 16px; }
+.step { border:1px solid #e7e5dc; border-radius:14px; background:#fff; overflow:hidden; }
+.step-h { display:flex; align-items:center; gap:12px; padding:13px 16px; }
+.step-n { flex:0 0 auto; width:36px; height:36px; border-radius:50%; display:grid; place-items:center;
+  font-weight:800; color:#fff; font-size:16px; }
+.step-t { font-size:16px; font-weight:700; }
+.step-t small { display:block; font-size:11px; font-weight:400; color:#6b6a64; margin-top:1px; }
+.step-tag { margin-left:auto; font-size:11px; font-weight:700; padding:3px 10px; border-radius:999px; white-space:nowrap; }
+.step-body { padding:0 16px 14px; font-size:12.5px; color:#46453f; line-height:1.6; }
+.step-body .splits { display:flex; gap:10px; flex-wrap:wrap; margin-top:4px; }
+.s1 .step-n{background:#e8590c;} .s1{border-color:#f0b27a;}
+.s2 .step-n{background:#06c755;} .s2{border-color:#9be3b8;}
+.s3 .step-n{background:#2563eb;} .s3{border-color:#9bbef5;}
+.s4 .step-n{background:#ef9f27;} .s4{border-color:#f1c97c;}
+.s5 .step-n{background:#0f6e56;} .s5{border-color:#5dcaa5;}
+.s1 .step-tag{background:#fff1e8;color:#b3450a;} .s2 .step-tag{background:#e6f9ee;color:#067a3a;}
+.s3 .step-tag{background:#eaf2ff;color:#1b4ba8;} .s4 .step-tag{background:#fdf1da;color:#8a5a10;}
+.s5 .step-tag{background:#e6f6ef;color:#0f6e56;}
+.s-arrow { text-align:center; padding:7px 0; }
+.s-arrow .amt { font-size:13px; font-weight:800; color:#1f1e1c; }
+.s-arrow .rate { font-size:11px; font-weight:700; color:#0f6e56; margin-left:6px; }
+.s-arrow .rate small { color:#6b6a64; font-weight:400; }
+
+/* Gantt */
+.gantt-wrap { overflow-x:auto; margin-bottom:12px; }
+.gantt { display:grid; grid-template-columns:130px repeat(4,1fr); gap:5px; font-size:11px; min-width:560px; }
+.gh { font-weight:700; text-align:center; padding:6px; background:#f1efe8; border-radius:6px; color:#3a3934; }
+.gl { padding:6px 4px; font-weight:700; font-size:11px; display:flex; align-items:center; color:#3a3934; }
+.gcell { border-radius:6px; padding:6px 4px; text-align:center; font-size:10px; font-weight:700; line-height:1.4; }
+.gcell.empty { background:#f4f3ee; color:#ccc; }
+.g-plan { background:#d4eaf7; color:#0c447c; }
+.g-exec { background:#dcf0e5; color:#0f4c23; }
+.g-key { background:#e8590c; color:#fff; }
+.g-cont { background:#fac775; color:#412402; }
+.g-launch { background:#1f1e1c; color:#fff; }
+.gantt-legend { display:flex; gap:12px; flex-wrap:wrap; font-size:11px; color:#4a4943; margin-bottom:12px; }
+.gantt-legend span { display:inline-flex; align-items:center; gap:5px; }
+.g-dot { width:11px; height:11px; border-radius:3px; display:inline-block; }
+
+/* Success metrics table */
+.scroll { overflow-x:auto; margin-bottom:16px; }
+table { width:100%; border-collapse:collapse; font-size:12px; }
+th,td { text-align:left; padding:9px 10px; border-bottom:1px solid #eceae1; vertical-align:top; }
+th { background:#f1efe8; font-weight:700; color:#3a3934; }
+tr:last-child td { border-bottom:none; }
+.badge { display:inline-block; font-size:10.5px; font-weight:700; border-radius:999px; padding:2px 8px; }
+.b-red { background:#fee2e2; color:#991b1b; }
+.b-grn { background:#dcfce7; color:#166534; }
+.two-col { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:16px; }
+@media(max-width:700px){.two-col{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>🎯 Ten Academy 第1期 20名集客戦略</h1>
+  <p class="sub">2026年9月15日 開講 ／ グループ集客の核を作る × サービス訴求の最適化 × 運用体制の持続可能性検証 を3本柱に　<b>（2026-06-22 更新：集客ファネルを5ステップ構造に刷新）</b></p>
+
+  <div class="ptabs">
+    <button class="ptab active" data-p="p1">① 全体像</button>
+    <button class="ptab" data-p="p2">② グループ別施策</button>
+    <button class="ptab" data-p="p3">③ 集客ファネル（5ステップ）</button>
+    <button class="ptab" data-p="p4">④ タイムライン</button>
+    <button class="ptab" data-p="p5">⑤ 成功指標</button>
+  </div>
+
+  <!-- ===== PAGE 1: 全体像 ===== -->
+  <div id="p1" class="page">
+
+    <div class="pillars">
+      <div class="pillar p1">
+        <div class="pnum">PILLAR 1 ／ 最重要</div>
+        <div class="ptitle">🏫 グループ集客の核を作る</div>
+        <p class="pdesc">学校単位でのコホートを形成し、第2期以降に自走する口コミ・先生チャネルの種を植える。「10校×3名」より「3校×10名」。<b>聖学院（8〜10名）</b>を最優先拠点として設計し、三田国際・東洋でも学校コミュニティを育て始める。</p>
+      </div>
+      <div class="pillar p2">
+        <div class="pnum">PILLAR 2 ／ 重要</div>
+        <div class="ptitle">🔍 サービス訴求の最適解を探る</div>
+        <p class="pdesc">「探究体験」訴求と「受験対策」訴求のどちらがどのグループに刺さるかを第1期で実測する。グループ別に訴求軸を変えて接触し、反応をデータとして蓄積。第2期のメッセージ設計に直結させる。</p>
+      </div>
+      <div class="pillar p3">
+        <div class="pnum">PILLAR 3 ／ 重要</div>
+        <div class="ptitle">⚙️ 運用体制の持続可能性を検証する</div>
+        <p class="pdesc">メンター主体で回せるか、very50スタッフが疲弊しない体制かを第1期で実測する。Kosukeの週次稼働時間・メンターのエンゲージメント・イレギュラー対応工数を記録し、Y2拡大時の体制設計の根拠データを積む。</p>
+      </div>
+    </div>
+
+    <div class="kpis">
+      <div class="kpi goal">目標成約<b>20名</b><span style="font-size:11px">9〜12月（4ヶ月）</span></div>
+      <div class="kpi">聖学院<b>8〜10名</b>最優先拠点</div>
+      <div class="kpi">三田国際<b>3〜4名</b>ショーケース</div>
+      <div class="kpi">東洋高校<b>2〜3名</b>受験訴求検証</div>
+      <div class="kpi">アルムナイ<b>2名</b>卒業生座談会</div>
+      <div class="kpi">MoG過去<b>2〜3名</b>総合型接続</div>
+      <div class="kpi">不特定多数<b>1〜2名</b>LP試運転</div>
+    </div>
+
+    <div class="bar-wrap">
+      <p class="bar-title">📊 20名への積み上げ（グループ別目標配分）</p>
+      <div class="bar">
+        <div class="seg" style="width:45%;background:#e8590c">聖学院 9名</div>
+        <div class="seg" style="width:17%;background:#2563eb">三田国際 3名</div>
+        <div class="seg" style="width:12%;background:#1a7f4b">東洋 2名</div>
+        <div class="seg" style="width:10%;background:#7c3aed">アルムナイ 2名</div>
+        <div class="seg" style="width:10%;background:#0f6e56">MoG過去 2名</div>
+        <div class="seg" style="width:6%;background:#888780;font-size:10px">不特定 1名</div>
+      </div>
+      <div class="legend">
+        <span><i class="dot" style="background:#e8590c"></i>聖学院グループ（9）</span>
+        <span><i class="dot" style="background:#2563eb"></i>三田国際グループ（3）</span>
+        <span><i class="dot" style="background:#1a7f4b"></i>東洋高校（2）</span>
+        <span><i class="dot" style="background:#7c3aed"></i>アルムナイグループ（2）</span>
+        <span><i class="dot" style="background:#0f6e56"></i>MoG過去参加者（2）</span>
+        <span><i class="dot" style="background:#888780"></i>不特定多数（1）</span>
+      </div>
+    </div>
+
+    <div class="two-col">
+      <div class="note">
+        <b>💴 第1期の収支方針</b><br>
+        第1期は黒字化を目指さない。グループ拠点形成・先生チャネル開拓・サービスブラッシュアップへの<b>将来への投資フェーズ</b>として位置づける。値下げはクロージング最終手段として後置き。初期から使うことはしない。
+      </div>
+      <div class="note-blue">
+        <b>📣 全グループ共通の訴求テーマ</b><br>
+        「<b>探究活動をさらにブラッシュアップして、受験対策（総合型選抜）につなげるには</b>」をベースメッセージに。グループの属性・背景に合わせて深度と切り口を調整する。
+      </div>
+    </div>
+
+    <div class="note-green" style="margin-top:12px;">
+      <b>🚫 今回スコープ外：潜在チャネルの開拓</b><br>
+      完全新規校への本格展開・学校電話営業の大規模実施などの潜在チャネル開拓は第1期対象外。第1期で実績・事例が揃ってから第2期以降で取り組む。
+    </div>
+
+  </div>
+
+  <!-- ===== PAGE 2: グループ別施策 ===== -->
+  <div id="p2" class="page hide">
+    <h2>グループ別 集客施策（6グループ）</h2>
+    <div class="gcards">
+
+      <!-- G1 聖学院 -->
+      <div class="gcard g1">
+        <div class="gcard-h">
+          <div class="gnum">GROUP 1 ／ 最優先拠点</div>
+          <div class="gtitle">聖学院グループ</div>
+          <div class="gtarget">目標 8〜10名 ／ 今夏MoG 47名（水道橋1時間以内）</div>
+        </div>
+        <div class="gcard-body">
+          <div class="tactic">
+            <div class="tactic-label">A ／ 過去MoG参加者向け</div>
+            <ul class="tactic-items">
+              <li>個別声がけ（MoGメンター経由 LINE/DM）</li>
+              <li>校内チラシ配布で認知補完</li>
+              <li>テーマイベント「探究活動をブラッシュアップして受験対策につなげるには」</li>
+              <li>→ 公式LINE追加 → 問い合わせ（体験・面談）へ誘導</li>
+            </ul>
+          </div>
+          <div class="tactic">
+            <div class="tactic-label">B ／ 今夏MoG参加者向け</div>
+            <ul class="tactic-items">
+              <li>MoG直後に個別声がけ（熱量最高潮のタイミング）</li>
+              <li>中間イベント不要。直接 体験・面談へ誘導</li>
+            </ul>
+          </div>
+          <div class="tactic">
+            <div class="tactic-label">C ／ グループ集客の仕掛け</div>
+            <ul class="tactic-items">
+              <li>核人物 <span class="key-person">ハジメ</span> を最初にコミットさせる</li>
+              <li>5名以上入塾で「学校内コミュニティグループ」特典（価格でなく体験の希少性）</li>
+              <li>中島さん経由で先生接触機会を確保（Y2先生チャネルの布石）</li>
+            </ul>
+          </div>
+          <div class="conv-path">
+            <span class="conv-step">個別声がけ</span><span class="conv-arr">→</span>
+            <span class="conv-step s-line">LINE追加</span><span class="conv-arr">→</span>
+            <span class="conv-step">問い合わせ</span><span class="conv-arr">→</span>
+            <span class="conv-step">面談/体験</span><span class="conv-arr">→</span>
+            <span class="conv-step">🎓入会</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- G2 三田国際 -->
+      <div class="gcard g2">
+        <div class="gcard-h">
+          <div class="gnum">GROUP 2 ／ ショーケース</div>
+          <div class="gtitle">三田国際グループ</div>
+          <div class="gtarget">目標 3〜4名 ／ 探究・海外志向が強い層</div>
+        </div>
+        <div class="gcard-body">
+          <div class="tactic">
+            <div class="tactic-label">施策</div>
+            <ul class="tactic-items">
+              <li>アルムナイ <span class="key-person">洲崎詩さん</span> によるイベントを開催</li>
+              <li>洲崎さん本人が知人・後輩へ個人的に声がけ</li>
+              <li>校内チラシ配布（友人の協力を仰ぐ）</li>
+            </ul>
+          </div>
+          <div class="tactic">
+            <div class="tactic-label">訴求の切り口</div>
+            <ul class="tactic-items">
+              <li>探究活動 × 実践体験 × 海外大・総合型の接続</li>
+              <li>「学校の探究では届かないレベルのアウトカム」を具体的に見せる</li>
+            </ul>
+          </div>
+          <div class="tactic">
+            <div class="tactic-label">位置づけ</div>
+            <ul class="tactic-items">
+              <li>第2期集客素材となるプロジェクト事例・成果物を意識した設計</li>
+              <li>ネクストアクション：公式LINE追加 → 問い合わせ（体験・面談）</li>
+            </ul>
+          </div>
+          <div class="conv-path">
+            <span class="conv-step">洲崎さんイベント</span><span class="conv-arr">→</span>
+            <span class="conv-step s-line">LINE追加</span><span class="conv-arr">→</span>
+            <span class="conv-step">問い合わせ</span><span class="conv-arr">→</span>
+            <span class="conv-step">面談/体験</span><span class="conv-arr">→</span>
+            <span class="conv-step">🎓入会</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- G3 東洋 -->
+      <div class="gcard g3">
+        <div class="gcard-h">
+          <div class="gnum">GROUP 3 ／ 受験訴求検証</div>
+          <div class="gtitle">東洋高校</div>
+          <div class="gtarget">目標 2〜3名 ／ 水道橋 徒歩7分の至近校</div>
+        </div>
+        <div class="gcard-body">
+          <div class="tactic">
+            <div class="tactic-label">施策</div>
+            <ul class="tactic-items">
+              <li>校内でチラシ配布</li>
+              <li>テーマ：「探究活動をブラッシュアップして受験対策につなげるには」（聖学院と共通）</li>
+            </ul>
+          </div>
+          <div class="tactic">
+            <div class="tactic-label">位置づけ</div>
+            <ul class="tactic-items">
+              <li>受験対策ニーズが比較的強い層の<b>訴求軸検証校</b></li>
+              <li>「探究」vs「受験対策」どちらが刺さるかを実測する実験校</li>
+              <li>2〜3名からスタートしてサービス調整の材料にする</li>
+            </ul>
+          </div>
+          <div class="conv-path">
+            <span class="conv-step">チラシ配布</span><span class="conv-arr">→</span>
+            <span class="conv-step s-line">LINE追加</span><span class="conv-arr">→</span>
+            <span class="conv-step">問い合わせ</span><span class="conv-arr">→</span>
+            <span class="conv-step">面談/体験</span><span class="conv-arr">→</span>
+            <span class="conv-step">🎓入会</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- G4 アルムナイ -->
+      <div class="gcard g4">
+        <div class="gcard-h">
+          <div class="gnum">GROUP 4 ／ 卒業生ネットワーク</div>
+          <div class="gtitle">アルムナイグループ</div>
+          <div class="gtarget">目標 2名 ／ 法政国際・都立西など</div>
+        </div>
+        <div class="gcard-body">
+          <div class="tactic">
+            <div class="tactic-label">施策</div>
+            <ul class="tactic-items">
+              <li>卒業生による座談会イベントを開催（オンライン）</li>
+              <li>登壇：<span class="key-person">村田愛奈</span>（法政国際→上智）・<span class="key-person">柏山京</span>（都立西→AIU）</li>
+              <li>校内チラシ配布と卒業生から個人への声がけを並行実施</li>
+            </ul>
+          </div>
+          <div class="tactic">
+            <div class="tactic-label">ゴール</div>
+            <ul class="tactic-items">
+              <li>座談会 → 公式LINE追加 → 問い合わせ（体験・面談）への流入</li>
+              <li>村田の集客見込み15名。保守コミット2名・上振れ余地あり</li>
+            </ul>
+          </div>
+          <div class="conv-path">
+            <span class="conv-step">卒業生座談会</span><span class="conv-arr">→</span>
+            <span class="conv-step s-line">LINE追加</span><span class="conv-arr">→</span>
+            <span class="conv-step">問い合わせ</span><span class="conv-arr">→</span>
+            <span class="conv-step">面談/体験</span><span class="conv-arr">→</span>
+            <span class="conv-step">🎓入会</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- G5 MoG過去参加者 -->
+      <div class="gcard g5">
+        <div class="gcard-h">
+          <div class="gnum">GROUP 5 ／ 既存接点の活用</div>
+          <div class="gtitle">MoG過去参加者</div>
+          <div class="gtarget">目標 2〜3名 ／ 2025年度参加者（72名）</div>
+        </div>
+        <div class="gcard-body">
+          <div class="tactic">
+            <div class="tactic-label">施策</div>
+            <ul class="tactic-items">
+              <li><b>高2対象</b>：オンラインイベント「MoGの経験と総合型選抜をつなげるには」</li>
+              <li>いきなり面談はハードルが高い層 → まずオンラインイベントへ誘導</li>
+              <li>メンターからInstagramストーリーでシェア</li>
+              <li>メンターによる個別声がけ（イベント・体験/面談への参加依頼）</li>
+            </ul>
+          </div>
+          <div class="tactic">
+            <div class="tactic-label">訴求の切り口</div>
+            <ul class="tactic-items">
+              <li>「MoGで経験したことを、総合型選抜でどう言語化・活用するか」</li>
+            </ul>
+          </div>
+          <div class="conv-path">
+            <span class="conv-step">オンラインイベント</span><span class="conv-arr">→</span>
+            <span class="conv-step s-line">LINE追加</span><span class="conv-arr">→</span>
+            <span class="conv-step">問い合わせ</span><span class="conv-arr">→</span>
+            <span class="conv-step">面談/体験</span><span class="conv-arr">→</span>
+            <span class="conv-step">🎓入会</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- G6 不特定多数 -->
+      <div class="gcard g6">
+        <div class="gcard-h">
+          <div class="gnum">GROUP 6 ／ チャネル検証（補完）</div>
+          <div class="gtitle">不特定多数</div>
+          <div class="gtarget">目標 1〜2名 ／ LP広告 ¥15万 試運転</div>
+        </div>
+        <div class="gcard-body">
+          <div class="tactic">
+            <div class="tactic-label">施策</div>
+            <ul class="tactic-items">
+              <li>LP配信（Instagram/Facebook広告 ¥15万）</li>
+              <li>テーマ：「探究活動のブラッシュアップと受験対策」</li>
+              <li>新規学校へのメール営業（探究・総合型に強い私立を優先）</li>
+            </ul>
+          </div>
+          <div class="tactic">
+            <div class="tactic-label">位置づけ</div>
+            <ul class="tactic-items">
+              <li><b>成約よりも実CPA計測が主目的</b>（Meta広告の学習データ蓄積）</li>
+              <li>第2期以降の完全新規チャネル本格投入への試運転</li>
+            </ul>
+          </div>
+          <div class="conv-path">
+            <span class="conv-step">LP広告</span><span class="conv-arr">→</span>
+            <span class="conv-step s-line">LINE追加</span><span class="conv-arr">→</span>
+            <span class="conv-step">問い合わせ</span><span class="conv-arr">→</span>
+            <span class="conv-step">面談/体験</span><span class="conv-arr">→</span>
+            <span class="conv-step">🎓入会</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="note" style="margin-top:14px">
+      <b>📱 共通コンバージョン設計：</b>全6グループの出口を<b>公式LINE追加（STEP2）</b>に統一。LINE上での問い合わせは<b>「無料体験／体験面談の問い合わせ」に限定（STEP3）</b>し、(a) まず説明会で話を聞く ／ (b) 直接 面談・体験 の2ルートへ分岐。問い合わせを体験・面談に絞ることで、次のアクションを「面談設定」だけにする（6/20 桐生さんMTG §10）。
+    </div>
+  </div>
+
+  <!-- ===== PAGE 3: 集客ファネル（5ステップ） ===== -->
+  <div id="p3" class="page hide">
+    <h2>集客ファネル（5ステップ：認知 → LINE追加 → 問い合わせ → 面談/体験 → 入会）</h2>
+    <p style="font-size:12.5px;color:#5f5e5a;margin:0 0 14px">各母集団（学校・グループ）ごとに、この5ステップを通って入会に至る。6/20 桐生さんMTG §10 のファネル設計に準拠し、ステップごとに歩留まりを計測して第2期の改善材料にする。</p>
+
+    <div class="steps">
+
+      <!-- STEP 1 認知 -->
+      <div class="step s1">
+        <div class="step-h">
+          <div class="step-n">1</div>
+          <div class="step-t">認知<small>各グループの接点づくり（イベント・個別声がけ・チラシ・SNS・LP）</small></div>
+          <div class="step-tag">母集団 ≈ 130名＋広告流入</div>
+        </div>
+        <div class="step-body">
+          <div class="f-inflows">
+            <div class="f-box" style="border-color:#f0b27a;background:#fff7f3;color:#b3450a;flex:1;min-width:120px;max-width:200px">
+              <b>聖学院</b><small>個別声がけ／テーマイベント／チラシ</small>
+            </div>
+            <div class="f-box" style="border-color:#9bbef5;background:#f0f6ff;color:#1b4ba8;flex:1;min-width:120px;max-width:200px">
+              <b>三田国際</b><small>洲崎詩さんイベント／チラシ・個人声がけ</small>
+            </div>
+            <div class="f-box" style="border-color:#86c9a8;background:#f1f9f5;color:#136138;flex:1;min-width:120px;max-width:200px">
+              <b>東洋高校</b><small>校内チラシ配布</small>
+            </div>
+            <div class="f-box" style="border-color:#c3a8f0;background:#f8f5ff;color:#5b21b6;flex:1;min-width:120px;max-width:200px">
+              <b>アルムナイ</b><small>卒業生座談会／チラシ・個人声がけ</small>
+            </div>
+            <div class="f-box" style="border-color:#5dcaa5;background:#f1f9f5;color:#04342c;flex:1;min-width:120px;max-width:200px">
+              <b>MoG過去参加者</b><small>オンラインイベント／メンターSNS・声がけ</small>
+            </div>
+            <div class="f-box" style="border-color:#c9c7bd;background:#f7f6f2;color:#4a4943;flex:1;min-width:120px;max-width:200px">
+              <b>不特定多数</b><small>LP広告／学校メール営業</small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="s-arrow">▼ <span class="amt">≈ 52名</span><span class="rate">LINE追加率 ≈ 40%<small>（全体告知10〜15%／個別DM 30〜40%台）</small></span></div>
+
+      <!-- STEP 2 LINE追加 -->
+      <div class="step s2">
+        <div class="step-h">
+          <div class="step-n">2</div>
+          <div class="step-t">LINE追加<small>公式LINE＝リード化・ナーチャリングのハブ</small></div>
+          <div class="step-tag">≈ 52名</div>
+        </div>
+        <div class="step-body">
+          全グループの出口を<b>公式LINE追加</b>に統一。電話番号・学校等はプロフィール入力（Googleフォーム）で取得し、CRMとして掘り起こしに使う（高1で早すぎた層は後でキャンペーン）。イベント・MoGではサービスのベースを説明していないため、<b>LINE上のナーチャリング（ホワイトペーパー／イベント案内）で「テン・アカデミーとは何か」を初めて説明</b>する。
+        </div>
+      </div>
+
+      <div class="s-arrow">▼ <span class="amt">≈ 28名</span><span class="rate">問い合わせ率 ≈ 54%<small>（ナーチャリング後）</small></span></div>
+
+      <!-- STEP 3 問い合わせ -->
+      <div class="step s3">
+        <div class="step-h">
+          <div class="step-n">3</div>
+          <div class="step-t">問い合わせ<small>「無料体験／体験面談」に限定 → 次のアクションを面談設定だけにする</small></div>
+          <div class="step-tag">≈ 28名</div>
+        </div>
+        <div class="step-body">
+          問い合わせ口を「<b>無料体験／体験面談の申込</b>」に絞ることで、次のアクションを面談設定だけにする。興味度で2ルートに分岐：
+          <div class="splits">
+            <div class="f-box" style="border-color:#c3a8f0;background:#f8f5ff;color:#5b21b6;flex:1;min-width:200px;max-width:340px">
+              (a) まず話を聞きたい<small>→ 説明会へ案内</small>
+            </div>
+            <div class="f-box" style="border-color:#86c9a8;background:#f1f9f5;color:#136138;flex:1;min-width:200px;max-width:340px">
+              (b) 入塾を直接検討したい<small>→ 個別面談・体験へ直接案内</small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="s-arrow">▼ <span class="amt">≈ 28名</span><span class="rate">実施率 ≈ ほぼ全員<small>（やる気のない層は面談で選別）</small></span></div>
+
+      <!-- STEP 4 面談/体験 -->
+      <div class="step s4">
+        <div class="step-h">
+          <div class="step-n">4</div>
+          <div class="step-t">面談 / 体験<small>説明会＆体験会＆面談（3回）＋随時の個別面談・1コマ体験</small></div>
+          <div class="step-tag">≈ 28名</div>
+        </div>
+        <div class="step-body">
+          <b>説明会＆体験会</b>（MoGアルムナイ向け共通コンテンツ）を土曜に3回開催し、各回後に個別面談を差し込む。体験は<b>1コマだけ（短く）</b>。期待値是正のため<b>面談はほぼ必ず実施</b>し、フィットしない層はキレイに選別する。体験後はその場でほぼ意思決定→電子契約。
+          <div class="date-row">
+            <div class="date-box">8月8日（土）<small>聖学院MoG参加者中心</small></div>
+            <div class="date-box">8月15日（土）<small>各グループ横断・過去MoG</small></div>
+            <div class="date-box">8月22日（土）<small>クロージング回・フォロー</small></div>
+          </div>
+          <div style="margin-top:8px;font-size:11.5px;color:#6b6a64">＋ 個別面談は日曜＋平日を全開放（公式LINE経由 or ウェブサイトから予約）</div>
+        </div>
+      </div>
+
+      <div class="s-arrow">▼ <span class="amt">≈ 20名</span><span class="rate">面談→入会 ≈ 70%<small>（6/20 桐生さんMTG §12 の業界水準）</small></span></div>
+
+      <!-- STEP 5 入会 -->
+      <div class="step s5">
+        <div class="step-h">
+          <div class="step-n">5</div>
+          <div class="step-t">入会<small>その場で意思決定 → 電子契約</small></div>
+          <div class="step-tag">🎓 目標 20名／9月15日開講</div>
+        </div>
+        <div class="step-body">
+          目標 <b>20名</b> の成約。入会金等の施策は ±5%程度の効きにとどめ、複雑にしない。価格検証は「面談→入会」のCVのところで行う。
+        </div>
+      </div>
+
+    </div>
+
+    <div class="note">
+      <b>📊 パイプライン試算（5ステップ）：</b>認知（MoGアルムナイ・水道橋1時間以内）≈130名 →〔LINE追加 40%〕→ 52名 →〔問い合わせ 54%〕→ 28名 →〔面談/体験 ほぼ全員〕→ 28名 →〔面談→入会 70%〕→ <b>約20名</b>。<b>最大レバーはSTEP1→2（MoGメンターによる個別声がけ精度）</b>（全体告知→10〜15% ／ 個別DM→30〜40%台）。7月中に「誰が・いつ・何人に声がけするか」を設計することが最重要。<br><span style="font-size:11px;color:#6b6a64">※ 問い合わせ率は仮置き（第1期で実測しブラッシュアップ）。面談→入会70%は桐生さんMTG §12 の業界水準を採用。</span>
+    </div>
+  </div>
+
+  <!-- ===== PAGE 4: タイムライン ===== -->
+  <div id="p4" class="page hide">
+    <h2>施策タイムライン（9月15日開講 逆算）</h2>
+
+    <div class="gantt-legend">
+      <span><i class="g-dot" style="background:#d4eaf7"></i>計画・準備</span>
+      <span><i class="g-dot" style="background:#dcf0e5"></i>実施</span>
+      <span><i class="g-dot" style="background:#e8590c"></i>勝負どころ（説明会・面談/体験）</span>
+      <span><i class="g-dot" style="background:#fac775"></i>継続・クロージング</span>
+      <span><i class="g-dot" style="background:#1f1e1c"></i>開講</span>
+    </div>
+
+    <div class="gantt-wrap">
+      <div class="gantt">
+        <div class="gh" style="background:transparent"></div>
+        <div class="gh">6月</div>
+        <div class="gh">7月</div>
+        <div class="gh">8月</div>
+        <div class="gh">9月</div>
+
+        <div class="gl" style="color:#e8590c">● 聖学院</div>
+        <div class="gcell g-plan">内容確定<br>メンター設計</div>
+        <div class="gcell g-exec">個別声がけ<br>テーマイベント</div>
+        <div class="gcell g-key">8/8 説明会①<br>→ 面談/体験</div>
+        <div class="gcell g-cont">成約<br>クロージング</div>
+
+        <div class="gl" style="color:#2563eb">● 三田国際</div>
+        <div class="gcell g-plan">洲崎さん<br>調整・確定</div>
+        <div class="gcell g-exec">イベント開催<br>チラシ配布</div>
+        <div class="gcell g-key">8/15 説明会②<br>→ 面談/体験</div>
+        <div class="gcell g-cont">成約</div>
+
+        <div class="gl" style="color:#1a7f4b">● 東洋高校</div>
+        <div class="gcell empty">—</div>
+        <div class="gcell g-exec">チラシ配布<br>準備</div>
+        <div class="gcell g-key">説明会全回<br>→ 面談/体験</div>
+        <div class="gcell g-cont">成約</div>
+
+        <div class="gl" style="color:#7c3aed">● アルムナイ</div>
+        <div class="gcell g-plan">村田さん<br>内容・日程確定</div>
+        <div class="gcell g-exec">座談会開催<br>チラシ・声がけ</div>
+        <div class="gcell g-key">8/15・22<br>説明会 → 面談/体験</div>
+        <div class="gcell g-cont">成約</div>
+
+        <div class="gl" style="color:#0f6e56">● MoG過去参加者</div>
+        <div class="gcell g-plan">イベント設計<br>メンター調整</div>
+        <div class="gcell g-exec">オンラインイベント<br>メンターSNS</div>
+        <div class="gcell g-key">説明会全回<br>→ 面談/体験</div>
+        <div class="gcell g-cont">成約</div>
+
+        <div class="gl" style="color:#4a4943">● 不特定多数</div>
+        <div class="gcell empty">—</div>
+        <div class="gcell g-exec">SNS広告<br>配信開始（¥15万）</div>
+        <div class="gcell g-cont">→ 継続配信 →</div>
+        <div class="gcell g-cont">→ 9/15まで</div>
+
+        <div class="gl" style="font-weight:700">📱 LINE / 面談・体験</div>
+        <div class="gcell g-plan">LINE整備<br>申込フォーム</div>
+        <div class="gcell g-plan">面談/体験枠<br>全開放準備</div>
+        <div class="gcell g-key">8/8・8/15・8/22<br>説明会＋面談/体験全開放</div>
+        <div class="gcell g-launch">9/15<br>🚀 開講</div>
+      </div>
+    </div>
+
+    <div class="note">
+      <b>🗓 8月の週次リズム（8/8・8/15・8/22 が勝負）：</b>
+      土曜＝説明会＆体験会（各グループへの集中的な刈り取り）→ 翌週以降の日曜＋平日＝面談/体験枠を全開放。3週で集中的に成約を積み、9月15日開講へ繋げる。<br>
+      <b>最重要期間：8月第1〜3週。7月中の個別声がけ設計（誰が・何人に・いつ）がこの3週の成否を決める。</b>
+    </div>
+  </div>
+
+  <!-- ===== PAGE 5: 成功指標 ===== -->
+  <div id="p5" class="page hide">
+    <h2>第1期 成功指標（フォアキャスト型）</h2>
+    <p style="font-size:12.5px;color:#5f5e5a;margin:0 0 16px">Go/No-goではなく「第2期以降を強化するための蓄積量」で評価。指標は第1期終了後に振り返り、第2期の設計に直接反映させる。</p>
+
+    <h2>① 集客・成約指標（5ステップの歩留まり）</h2>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>指標</th><th>目標値</th><th>計測方法</th><th>第2期への活用</th></tr></thead>
+        <tbody>
+          <tr><td>STEP1→2 LINE追加率</td><td><b>40%以上</b></td><td>母集団数 vs LINE登録数</td><td>認知施策・声がけ精度の評価</td></tr>
+          <tr><td>STEP2→3 問い合わせ率</td><td><b>実測値取得</b>（仮置き54%）</td><td>LINE登録 vs 体験/面談申込</td><td>ナーチャリング設計の改善</td></tr>
+          <tr><td>STEP4→5 面談→入会率</td><td><b>70%前後</b></td><td>面談数 vs 入会数</td><td>面談スクリプト・価格設計の検証</td></tr>
+          <tr><td>入塾成約数</td><td><b>20名</b></td><td>入塾記録</td><td>第1期定員達成</td></tr>
+          <tr><td>聖学院グループ在籍数</td><td><b>8名以上</b></td><td>入塾記録</td><td>グループ拠点化の検証</td></tr>
+          <tr><td>チャネル別 実CPA</td><td>MoG経由 <b>¥15,000以下</b><br>LP広告 実測値取得</td><td>チャネル別記録</td><td>第2期の予算配分根拠</td></tr>
+          <tr><td>保護者の意思決定プロセス記録</td><td><b>全成約ケース記録</b></td><td>面談メモ</td><td>ペルソナ設計・訴求軸の精度向上</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>② PILLAR 2：訴求最適化の検証指標</h2>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>指標</th><th>目標</th><th>用途</th></tr></thead>
+        <tbody>
+          <tr><td>入塾のきっかけ訴求（探究 vs 受験対策）</td><td>全成約ケース記録</td><td>どのメッセージがどのグループに効いたか</td></tr>
+          <tr><td>ペルソナ分布（HC/WC/PD）</td><td>全員分記録</td><td>カリキュラム調整・第2期メッセージ設計</td></tr>
+          <tr><td>学校別の成約率・参加率</td><td>グループ別集計</td><td>第2期の集客先優先順位の見直し</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>③ 継続・体験指標</h2>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>指標</th><th>目標値</th><th>計測方法</th><th>用途</th></tr></thead>
+        <tbody>
+          <tr><td>4ヶ月継続率</td><td><b>90%以上</b></td><td>月末在籍確認</td><td>PLの97%仮定の検証</td></tr>
+          <tr><td>NPS（生徒）</td><td><b>30以上</b></td><td>月末アンケート</td><td>体験価値の定量評価</td></tr>
+          <tr><td>保護者から「続けさせたい」発言数</td><td><b>15名以上</b></td><td>面談記録</td><td>保護者納得度の確認</td></tr>
+          <tr><td>先生から後輩紹介の意向</td><td><b>1校以上</b></td><td>先生ヒアリング</td><td>先生チャネルの実証</td></tr>
+          <tr><td>プロジェクト成果物の完成</td><td><b>3件以上</b></td><td>成果物記録</td><td>第2期集客素材の確保</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>④ PILLAR 3：運用体制の持続可能性（検証指標）</h2>
+    <p style="font-size:12px;color:#5f5e5a;margin:0 0 10px">メンター主体で回せているか、very50スタッフが疲弊していないかを定量的に記録する。感覚的な振り返りではなく、数値で残すことで第2期の体制設計根拠にする。</p>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>指標</th><th>目標値</th><th>計測方法</th><th>用途</th></tr></thead>
+        <tbody>
+          <tr><td>Kosukeの週次稼働時間</td><td><b>14時間以内</b></td><td>週次セルフ記録</td><td>PLの工数仮定検証。Y2拡大時のコスト計算根拠</td></tr>
+          <tr><td>メンターの月次稼働時間</td><td>想定稼働時間の<b>±20%以内</b></td><td>メンター側のセルフ記録</td><td>メンター1人あたりのキャパ上限を把握</td></tr>
+          <tr><td>メンターの継続意向（第2期も続けたいか）</td><td><b>全員が「続けたい」</b></td><td>4ヶ月後ヒアリング</td><td>メンター供給の持続可能性確認</td></tr>
+          <tr><td>イレギュラー対応件数と工数</td><td>件数・時間を記録（目標値なし）</td><td>都度記録</td><td>想定外の工数がどこで発生するかの把握</td></tr>
+          <tr><td>緊急対応（生徒・保護者からの問い合わせ）の応答工数</td><td>記録のみ（目標値なし）</td><td>対応ログ</td><td>Y2以降の問い合わせ対応体制設計に使う</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="note-green">
+      <b>🚫 今回スコープ外（第2期以降）：</b>
+      潜在チャネルの開拓（完全新規校への本格展開、学校電話営業の大規模実施）は第1期の実績・事例が揃ってから。第2期以降に取り組む。
+    </div>
+  </div>
+
+</div>
+<script>
+document.querySelectorAll('.ptab').forEach(function(t){
+  t.addEventListener('click',function(){
+    document.querySelectorAll('.ptab').forEach(function(x){x.classList.remove('active');});
+    t.classList.add('active');
+    var p=t.getAttribute('data-p');
+    ['p1','p2','p3','p4','p5'].forEach(function(k){
+      document.getElementById(k).classList.toggle('hide',k!==p);
+    });
+  });
+});
+</script>
+</body>
+</html>
